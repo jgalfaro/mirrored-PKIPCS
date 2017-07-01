@@ -1,3 +1,8 @@
+/*
+Telecom SudParis
+2017, Pierre-Olivier Rocher
+*/
+
 #include <iostream>
 
 #include <vector>

@@ -1,3 +1,8 @@
+/*
+Telecom SudParis
+2017, Pierre-Olivier Rocher
+*/
+
 #include <map>
 
 #include <mcl/bn256.hpp>
