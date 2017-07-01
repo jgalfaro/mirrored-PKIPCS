@@ -1,8 +1,3 @@
-/*
-Telecom SudParis
-2017, Pierre-Olivier Rocher
-*/
-
 #include <map>
 
 #include <mcl/bn256.hpp>
@@ -24,7 +19,7 @@ cybozu::RandomGenerator g_rg;
 
 using namespace mcl::bn256;
 
-void main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	/***** SETUP *****/
 
@@ -33,15 +28,18 @@ void main(int argc, char **argv)
 	const char *ba = "13891744915211034074451795021214165905772212241412891944830863846330766296736";
 	const char *bb = "7937318970632701341203597196594272556916396164729705624521405069090520231616";
 
+
 	mcl::bn::CurveParam cp = mcl::bn::CurveFp254BNb;
 
 	bn256init(cp);
 
 	G1 Q(-1, 1);
 	G2 P(Fp2(aa, ab), Fp2(ba, bb));
-	
+
 	Fp g1N;
 	g1N.setRand(g_rg);
+
+
 	std::cout << "setup g1N: " << g1N << std::endl;
 
 	G1 g1;
@@ -74,10 +72,11 @@ void main(int argc, char **argv)
 	// Compute h2
 	Fr moinsAlpha;
 	Fr::inv(moinsAlpha, alpha);
-	
+
 	G2 h2;
 	G2::mul(h2, g2, moinsAlpha);
 	std::cout << "setup h2: " << h2 << std::endl;
+
 
 	/***** KEYGEN *****/
 
@@ -93,11 +92,11 @@ void main(int argc, char **argv)
 	Fp12 y1b;
 	BN::pairing(y1b, g1, g2);
 	//std::cout << "keygen y1b: " << y1b << std::endl;
-	
+
 	Fp12 y1;
 	Fp12::pow(y1, y1b, sk1);
 	std::cout << "keygen y1 = e(g1, g2)^sk1: " << y1b << std::endl;
-	
+
 	// Compute issuer private key
 	Fr skis;
 	skis.setRand(g_rg);
@@ -148,6 +147,7 @@ void main(int argc, char **argv)
 	std::string attribute3 = { "attribute3" };
 	std::string hash3 = "7253f6e42af7406c9b09dd8b9c2d2cac1f5d8719d014a7bdfe57dd4f2bc02f0e";
 
+        /*
 	// Compute hs
 	Fp ha1;
 	ha1.setMsg(hash1);
@@ -186,5 +186,6 @@ void main(int argc, char **argv)
 
 	G1 c11;
 	G1::add(c11, xkis, xuHs);
-
+        */
+	return 0;
 }
