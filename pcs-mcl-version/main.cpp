@@ -147,7 +147,7 @@ int main(int argc, char **argv)
 	std::string attribute3 = { "attribute3" };
 	std::string hash3 = "7253f6e42af7406c9b09dd8b9c2d2cac1f5d8719d014a7bdfe57dd4f2bc02f0e";
 
-        /*
+        
 	// Compute hs
 	Fp ha1;
 	ha1.setMsg(hash1);
@@ -186,6 +186,6 @@ int main(int argc, char **argv)
 
 	G1 c11;
 	G1::add(c11, xkis, xuHs);
-        */
+        
 	return 0;
 }
