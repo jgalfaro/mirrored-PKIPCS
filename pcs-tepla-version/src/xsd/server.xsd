@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:scb="http://www.stonepine.fr/server/" xmlns:acb="http://www.stonepine.fr/authentication/" xmlns:accb="http://www.stonepine.fr/authorizedCertificate/" targetNamespace="http://www.stonepine.fr/server/" version="1.0">
+
+	<!-- Import -->
+
+	<import namespace="http://www.stonepine.fr/authentication/" schemaLocation="authentication.xsd"/>
+	<import namespace="http://www.stonepine.fr/authorizedCertificate/" schemaLocation="authorizedCertificate.xsd"/>
+
+	<!-- Complex types definitions -->
+
+	<complexType name="serverComplexType">
+		<sequence>
+			<element name="name" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="ipAddress" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="externalIpAddressOrDomainName" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="isHostnameValidationMandatory" type="boolean" minOccurs="0" maxOccurs="1" />
+			<element name="port" type="unsignedShort" minOccurs="1" maxOccurs="1" />
+			<element name="threadNumber" type="unsignedShort" minOccurs="1" maxOccurs="1" />
+			<element name="clientCertificateAuthority" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="clientCertificateRevocationList" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="fileCertificate" type="acb:fileCertificateConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="smartCardCertificate" type="acb:smartCardCertificateConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="signaturePublicKey" type="string" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="serverConfigurationComplexType">
+		<sequence>
+			<element name="id" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="httpsServer" type="scb:serverComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="authorizedClients" type="accb:authorizedCertificatesConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="authorizedClientsWithPrivilege" type="accb:authorizedCertificatesConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="serverConfigurationsComplexType">
+		<sequence>
+			<element name="serverConfiguration" type="scb:serverConfigurationComplexType" minOccurs="1" maxOccurs="unbounded" >
+				<unique name="unique_id">
+					<selector xpath="id"/>
+					<field xpath="."/>
+				</unique>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Roots -->
+
+	<element name="serverConfiguration" type="scb:serverConfigurationComplexType" />
+	<element name="serverConfigurations" type="scb:serverConfigurationsComplexType" />
+
+</schema>

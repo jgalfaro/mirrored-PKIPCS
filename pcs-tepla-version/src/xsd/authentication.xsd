@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:acb="http://www.stonepine.fr/authentication/" targetNamespace="http://www.stonepine.fr/authentication/" version="1.0">
+
+	<!-- Complex types definitions -->
+
+	<complexType name="userNameAndPasswordConfigurationComplexType">
+		<sequence>
+			<element name="userName" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="password" type="string" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="fileCertificateConfigurationComplexType">
+		<sequence>
+			<element name="certificateConfigurationId" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="certificateAuthority" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="certificate" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="privateKey" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="privateKeyPassword" type="string" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="smartCardCertificateConfigurationComplexType">
+		<sequence>
+			<element name="pkcs11ModulePath" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="certificateAuthority" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="smartCardId" type="unsignedByte" minOccurs="0" maxOccurs="1" />
+			<element name="certificateId" type="unsignedByte" minOccurs="0" maxOccurs="1" />
+			<element name="certificateCommonName" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="smartCardPinPassword" type="string" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<!-- Root -->
+
+	<element name="userNameAndPasswordConfiguration" type="acb:userNameAndPasswordConfigurationComplexType" />
+	<element name="fileCertificateConfiguration" type="acb:fileCertificateConfigurationComplexType" />
+	<element name="smartCardCertificateConfiguration" type="acb:smartCardCertificateConfigurationComplexType" />
+	
+</schema>

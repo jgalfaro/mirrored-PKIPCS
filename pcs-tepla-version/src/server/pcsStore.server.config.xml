@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<acb:oneServerOneDatabaseClientConfiguration xmlns:acb="http://www.stonepine.fr/application/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.stonepine.fr/application/ ../xsd/application.xsd">
+	<id>B9B222CA-188C-45AC-9177-D2B71C6FA2D7</id>
+	<serverConfiguration>
+		<id>41297444-CF37-4124-B3D1-907C8248B075</id>
+		<httpsServer>
+			<ipAddress>127.0.0.20</ipAddress>
+			<port>443</port>
+			<threadNumber>0</threadNumber>
+			<clientCertificateAuthority>../certificates/pcs-store/pcs-store-component-ca-chain.cert.pem</clientCertificateAuthority>
+			<clientCertificateRevocationList>../certificates/pcs-store/pcs-store-component-ca-chain.crl.pem</clientCertificateRevocationList>
+			<fileCertificate>
+				<certificateAuthority>../certificates/pcs-store/pcs-store-component-ca-chain.cert.pem</certificateAuthority>
+				<certificate>../certificates/pcs-store/pcs-store-server.cert.pem</certificate>
+				<privateKey>../certificates/pcs-store/pcs-store-server.key.pem</privateKey>
+			</fileCertificate>
+		</httpsServer>
+		<authorizedClientsWithPrivilege>
+			<certificateCommmonName>pcs-store-client</certificateCommmonName>
+		</authorizedClientsWithPrivilege>
+	</serverConfiguration>
+	<databaseClientConfiguration>
+		<id>3882E317-571A-409D-9E0A-7EB1AE7E690A</id>
+		<databaseClient>
+			<type>postgres</type>
+			<name>pcs-store</name>
+			<serverIpAddressOrDomainName>127.0.0.1</serverIpAddressOrDomainName>
+			<serverPort>5432</serverPort>
+			<userNameAndPassword>
+				<userName>postgres</userName>
+				<password>BjWvriRxIy6n83d79xXuzZ4Le0ps$IQ@</password>
+			</userNameAndPassword>
+			<!-- <serverCertificateAuthority>../certificates/pcs-store/university-component-ca-chain.cert.pem</serverCertificateAuthority>
+			<fileCertificate>
+				<certificateAuthority>../certificates/pcs-store/university-component-ca-chain.cert.pem</certificateAuthority>
+				<certificate>../certificates/pcs-store/university-eassessment-postgresql-client-1.cert.pem</certificate>
+				<privateKey>../certificates/pcs-store/university-eassessment-postgresql-client-1.key.pem</privateKey>
+			</fileCertificate> -->
+		</databaseClient>
+		<authorizedServer>
+			<certificateCommmonName>pcs-store-postgresql-server</certificateCommmonName>
+		</authorizedServer>
+	</databaseClientConfiguration>
+</acb:oneServerOneDatabaseClientConfiguration>

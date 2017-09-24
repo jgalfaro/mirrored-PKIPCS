@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<acb:oSODCSCConfiguration xmlns:acb="http://www.stonepine.fr/application/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.stonepine.fr/application/ ../xsd/application.xsd">
+	<id>49B8157A-3382-4353-AFE0-28AD91A7E01D</id>
+	<serverConfiguration>
+		<id>6AB7ACA8-B266-4C3C-98BE-85B8D7E6BD97</id>
+		<httpsServer>
+			<name>pcs-store</name>
+			<ipAddress>127.0.0.10</ipAddress>
+			<port>443</port>
+			<threadNumber>0</threadNumber>
+			<clientCertificateAuthority>../certificates/pcs-store/pcs-store-component-ca-chain.cert.pem</clientCertificateAuthority>
+			<!-- <clientCertificateRevocationList>../certificates/work/tesla-component-ca-chain.crl.pem</clientCertificateRevocationList> -->
+			<fileCertificate>
+				<certificateConfigurationId>0435325C-1EBA-4F83-99F1-657D1BBF87D2</certificateConfigurationId>
+				<certificateAuthority>../certificates/pcs-store/pcs-store-component-ca.cert.pem</certificateAuthority>
+				<certificate>../certificates/pcs-store/pcs-store-server.cert.pem</certificate>
+				<privateKey>../certificates/pcs-store/pcs-store-server.key.pem</privateKey>
+			</fileCertificate>
+		</httpsServer>
+		<authorizedClientsWithPrivilege>
+			<certificateCommmonName>tesla-certificatestore-client</certificateCommmonName>
+		</authorizedClientsWithPrivilege>
+	</serverConfiguration>
+	<databaseClientConfiguration>
+		<id>ACC029D4-A31E-4302-9727-929765D24136</id>
+		<databaseClient>
+			<type>postgres</type>
+			<name>pcs-store</name>
+			<serverIpAddressOrDomainName>127.0.0.1</serverIpAddressOrDomainName>
+			<serverPort>5432</serverPort>
+			<userNameAndPassword>
+				<userName>postgres</userName>
+				<password>BjWvriRxIy6n83d79xXuzZ4Le0ps$IQ@</password>
+			</userNameAndPassword>
+			<!-- <fileCertificate>
+				<certificateAuthority>../certificates/work/tesla-component-ca-chain.cert.pem</certificateAuthority>
+				<certificate>../certificates/work/tesla-certificatestore-postgresql-client.cert.pem</certificate>
+				<privateKey>../certificates/work/tesla-certificatestore-postgresql-client.key.pem</privateKey>
+			</fileCertificate> -->
+		</databaseClient>
+		<authorizedServer>
+			<certificateCommmonName>tesla-certificatestore-postgresql-server</certificateCommmonName>
+		</authorizedServer>
+	</databaseClientConfiguration>
+	<certificateConfigurations>
+		<dumpDirectoryPath>C:/app/pcsStore/</dumpDirectoryPath>
+		<!-- authorities -->
+		<certificateConfiguration>
+			<id>0101A3DD-D92D-4067-B585-8A27FF5654F9</id>
+			<issuer>
+				<commonName>pcs-store-ca</commonName>
+			</issuer>
+			<subject>
+				<certificateType>X509_SELF_SIGNED_CA</certificateType>
+				<countryName>FR</countryName>
+				<stateOrProvinceName>Ile de France</stateOrProvinceName>
+				<localityName>Evry</localityName>
+				<organizationName>Telecom SudParis</organizationName>
+				<organizationalUnitName>RST</organizationalUnitName>
+				<commonName>pcs-store-ca</commonName>
+				<numberOfValidDaysFromNow>3650</numberOfValidDaysFromNow>
+				<privateKeyType>RSA_4096</privateKeyType>
+				<privateKeyPassword>tDvh@I$nh2wQn5nc0y2J2hWt*iFdB3Uj</privateKeyPassword>
+			</subject>
+		</certificateConfiguration>
+		<certificateConfiguration>
+			<id>02527495-7FF6-43D5-AB87-DC8BBFB2B9BF</id>
+			<issuer>
+				<commonName>pcs-store-ca</commonName>
+			</issuer>
+			<subject>
+				<certificateType>X509_INTERMEDIATE_CA</certificateType>
+				<countryName>FR</countryName>
+				<stateOrProvinceName>Ile de France</stateOrProvinceName>
+				<localityName>Evry</localityName>
+				<organizationName>Telecom SudParis</organizationName>
+				<organizationalUnitName>RST</organizationalUnitName>
+				<commonName>pcs-store-network-ca</commonName>
+				<numberOfValidDaysFromNow>3650</numberOfValidDaysFromNow>
+				<privateKeyType>RSA_4096</privateKeyType>
+				<privateKeyPassword>BtI2a4kpV89SXB4QsnAcyveSQ$E$vf*z</privateKeyPassword>
+			</subject>
+		</certificateConfiguration>
+		<certificateConfiguration>
+			<id>0324D7D5-2E9E-4490-A4DF-23326381DFF9</id>
+			<issuer>
+				<commonName>pcs-store-network-ca</commonName>
+			</issuer>
+			<subject>
+				<certificateType>X509_SIGNING_CA</certificateType>
+				<countryName>FR</countryName>
+				<stateOrProvinceName>Ile de France</stateOrProvinceName>
+				<localityName>Evry</localityName>
+				<organizationName>Telecom SudParis</organizationName>
+				<organizationalUnitName>RST</organizationalUnitName>
+				<commonName>pcs-store-identity-ca</commonName>
+				<numberOfValidDaysFromNow>3650</numberOfValidDaysFromNow>
+				<privateKeyType>RSA_4096</privateKeyType>
+				<privateKeyPassword>h!vbV6G13Zukuh8Z8Tr4Lsr$se!fgW4h</privateKeyPassword>
+			</subject>
+		</certificateConfiguration>
+		<certificateConfiguration>
+			<id>0435325C-1EBA-4F83-99F1-657D1BBF87D2</id>
+			<issuer>
+				<commonName>pcs-store-network-ca</commonName>
+			</issuer>
+			<subject>
+				<certificateType>X509_SIGNING_CA</certificateType>
+				<countryName>FR</countryName>
+				<stateOrProvinceName>Ile de France</stateOrProvinceName>
+				<localityName>Evry</localityName>
+				<organizationName>Telecom SudParis</organizationName>
+				<organizationalUnitName>RST</organizationalUnitName>
+				<commonName>pcs-store-component-ca</commonName>
+				<numberOfValidDaysFromNow>3650</numberOfValidDaysFromNow>
+				<privateKeyType>RSA_4096</privateKeyType>
+				<privateKeyPassword>iOHqHJM$a1dE3DP%Pw$qiUR^!Fn53KPa</privateKeyPassword>
+			</subject>
+		</certificateConfiguration>
+		<!-- OCSP signing certificates -->
+		<certificateConfiguration>
+			<id>05F0D3EF-5898-484C-AA59-73C5C01C3D5C</id>
+			<issuer>
+				<commonName>pcs-store-ca</commonName>
+			</issuer>
+			<subject>
+				<certificateType>X509_OCSP_SIGNING</certificateType>
+				<countryName>FR</countryName>
+				<stateOrProvinceName>Ile de France</stateOrProvinceName>
+				<localityName>Evry</localityName>
+				<organizationName>Telecom SudParis</organizationName>
+				<organizationalUnitName>RST</organizationalUnitName>
+				<commonName>pcs-store-ca-ocsp</commonName>
+				<numberOfValidDaysFromNow>3650</numberOfValidDaysFromNow>
+				<privateKeyType>RSA_4096</privateKeyType>
+				<privateKeyPassword>BmuYaKSF96i%j#jM22YxU!33$m4c*@d8</privateKeyPassword>
+			</subject>
+		</certificateConfiguration>
+		<certificateConfiguration>
+			<id>0695E44E-DAC9-44D0-A605-43A97D36C18E</id>
+			<issuer>
+				<commonName>pcs-store-network-ca</commonName>
+			</issuer>
+			<subject>
+				<certificateType>X509_OCSP_SIGNING</certificateType>
+				<countryName>FR</countryName>
+				<stateOrProvinceName>Ile de France</stateOrProvinceName>
+				<localityName>Evry</localityName>
+				<organizationName>Telecom SudParis</organizationName>
+				<organizationalUnitName>RST</organizationalUnitName>
+				<commonName>pcs-store-network-ca-ocsp</commonName>
+				<numberOfValidDaysFromNow>3650</numberOfValidDaysFromNow>
+				<privateKeyType>RSA_4096</privateKeyType>
+				<privateKeyPassword>yHh8VZa8Nf!7D3b^gVPdd%aS%5SM5y!z</privateKeyPassword>
+			</subject>
+		</certificateConfiguration>
+		<certificateConfiguration>
+			<id>07915BBA-9E92-41D1-AEBD-2D142273EC5E</id>
+			<issuer>
+				<commonName>pcs-store-identity-ca</commonName>
+			</issuer>
+			<subject>
+				<certificateType>X509_OCSP_SIGNING</certificateType>
+				<countryName>FR</countryName>
+				<stateOrProvinceName>Ile de France</stateOrProvinceName>
+				<localityName>Evry</localityName>
+				<organizationName>Telecom SudParis</organizationName>
+				<organizationalUnitName>RST</organizationalUnitName>
+				<commonName>pcs-store-identity-ca-ocsp</commonName>
+				<numberOfValidDaysFromNow>3650</numberOfValidDaysFromNow>
+				<privateKeyType>RSA_4096</privateKeyType>
+				<privateKeyPassword>Kq9JWjOLAvJTWsBC@y$zGZJFgugxg0R*</privateKeyPassword>
+			</subject>
+		</certificateConfiguration>
+		<certificateConfiguration>
+			<id>083FCE04-8320-4255-93FE-B3987884F619</id>
+			<issuer>
+				<commonName>pcs-store-component-ca</commonName>
+			</issuer>
+			<subject>
+				<certificateType>X509_OCSP_SIGNING</certificateType>
+				<countryName>FR</countryName>
+				<stateOrProvinceName>Ile de France</stateOrProvinceName>
+				<localityName>Evry</localityName>
+				<organizationName>Telecom SudParis</organizationName>
+				<organizationalUnitName>RST</organizationalUnitName>
+				<commonName>pcs-store-component-ca-ocsp</commonName>
+				<numberOfValidDaysFromNow>3650</numberOfValidDaysFromNow>
+				<privateKeyType>RSA_4096</privateKeyType>
+				<privateKeyPassword>PPMTrbNUBPnra@Ni2DsfxSN9$knH41Ln</privateKeyPassword>
+			</subject>
+		</certificateConfiguration>
+		<!-- certificate store -->
+		<certificateConfiguration>
+			<id>09DB414D-7F28-4EF1-A2AF-151F3A7130F3</id>
+			<issuer>
+				<commonName>pcs-store-component-ca</commonName>
+			</issuer>
+			<subject>
+				<certificateType>X509_SERVER</certificateType>
+				<countryName>FR</countryName>
+				<stateOrProvinceName>Ile de France</stateOrProvinceName>
+				<localityName>Evry</localityName>
+				<organizationName>Telecom SudParis</organizationName>
+				<organizationalUnitName>RST</organizationalUnitName>
+				<commonName>pcs-store-server</commonName>
+				<numberOfValidDaysFromNow>365</numberOfValidDaysFromNow>
+				<privateKeyType>RSA_2048</privateKeyType>
+			</subject>
+		</certificateConfiguration>
+		<certificateConfiguration>
+			<id>0A854AB7-DB8B-4B64-A205-D071844637BA</id>
+			<issuer>
+				<commonName>pcs-store-component-ca</commonName>
+			</issuer>
+			<subject>
+				<certificateType>X509_CLIENT</certificateType>
+				<countryName>FR</countryName>
+				<stateOrProvinceName>Ile de France</stateOrProvinceName>
+				<localityName>Evry</localityName>
+				<organizationName>Telecom SudParis</organizationName>
+				<organizationalUnitName>RST</organizationalUnitName>
+				<commonName>pcs-store-client</commonName>
+				<numberOfValidDaysFromNow>365</numberOfValidDaysFromNow>
+				<privateKeyType>RSA_2048</privateKeyType>
+			</subject>
+		</certificateConfiguration>
+	</certificateConfigurations>
+</acb:oSODCSCConfiguration>

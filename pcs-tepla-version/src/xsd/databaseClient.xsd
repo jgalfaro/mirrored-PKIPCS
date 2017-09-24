@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:dccb="http://www.stonepine.fr/databaseClient/" xmlns:acb="http://www.stonepine.fr/authentication/" xmlns:accb="http://www.stonepine.fr/authorizedCertificate/" targetNamespace="http://www.stonepine.fr/databaseClient/" version="1.0">
+
+	<!-- Includes -->
+
+	<!-- <include schemaLocation="../../xsd/regex.xsd"/> -->
+
+	<!-- Import -->
+
+	<import namespace="http://www.stonepine.fr/authentication/" schemaLocation="authentication.xsd"/>
+	<import namespace="http://www.stonepine.fr/authorizedCertificate/" schemaLocation="authorizedCertificate.xsd"/>
+
+
+	<!-- Complex types definitions -->
+
+	<complexType name="databaseClientComplexType">
+		<sequence>
+			<element name="type" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="name" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="serverIpAddressOrDomainName" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="serverPort" type="unsignedShort" minOccurs="1" maxOccurs="1" />
+			<element name="serverCertificateAuthority" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="userNameAndPassword" type="acb:userNameAndPasswordConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="fileCertificate" type="acb:fileCertificateConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="smartCardCertificate" type="acb:smartCardCertificateConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="databaseClientConfigurationComplexType">
+		<sequence>
+			<element name="id" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="databaseClient" type="dccb:databaseClientComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="authorizedServer" type="accb:authorizedCertificateConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="databaseClientConfigurationsComplexType">
+		<sequence>
+			<element name="databaseClientConfiguration" type="dccb:databaseClientConfigurationComplexType" minOccurs="1" maxOccurs="unbounded" >
+				<unique name="unique_id">
+					<selector xpath="id"/>
+					<field xpath="."/>
+				</unique>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Roots -->
+
+	<element name="databaseClientConfiguration" type="dccb:databaseClientConfigurationComplexType" />
+	<element name="databaseClientConfigurations" type="dccb:databaseClientConfigurationsComplexType" />
+
+</schema>

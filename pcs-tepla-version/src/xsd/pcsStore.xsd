@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:pcs="http://www.stonepine.fr/pcs/" targetNamespace="http://www.stonepine.fr/pcs/" version="1.0">
+
+	<complexType name="g1ComplexType">
+		<sequence>
+			<element name="x" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="y" type="string" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="g2ComplexType">
+		<sequence>
+			<element name="x" type="pcs:g1ComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="y" type="pcs:g1ComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="g3ComplexType">
+		<sequence>
+			<element name="x" type="pcs:g1ComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="y" type="pcs:g1ComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="z" type="pcs:g1ComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="g6ComplexType">
+		<sequence>
+			<element name="x" type="pcs:g3ComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="y" type="pcs:g3ComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="issuingOrganizationPublicKeyComplexType">
+		<sequence>
+			<element name="xO" type="pcs:g6ComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="yO" type="pcs:g2ComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="attributeComplexType">
+		<sequence>
+			<element name="name" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="publicKey" type="pcs:g1ComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="attributesComplexType">
+		<sequence>
+			<element name="attribute" type="pcs:attributeComplexType" minOccurs="1" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="setupParametersComplexType">
+		<sequence>
+			<element name="g1" type="pcs:g1ComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="g2" type="pcs:g2ComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="h1" type="pcs:g1ComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="h2" type="pcs:g2ComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="issuerPublicKey" type="pcs:g1ComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="issuingOrganizationPublicKey" type="pcs:issuingOrganizationPublicKeyComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="attributes" type="pcs:attributesComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="issueComplexType">
+		<sequence>
+			<element name="userPublicKey" type="pcs:g1ComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="id" type="unsignedLong" minOccurs="0" maxOccurs="1" />
+			<element name="c1" type="pcs:g1ComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="c2" type="pcs:g2ComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="c3" type="pcs:g1ComplexType" minOccurs="0" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="pcsStoreConfigurationComplexType">
+		<sequence>
+			<element name="setupParameters" type="pcs:setupParametersComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="issue" type="pcs:issueComplexType" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<!-- Root -->
+
+	<element name="pcsStoreConfiguration" type="pcs:pcsStoreConfigurationComplexType"/>
+
+</schema>

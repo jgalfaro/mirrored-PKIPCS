@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<ccb:clientConfiguration xmlns:ccb="http://www.stonepine.fr/client/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.stonepine.fr/client/ ../xsd/client.xsd">
+	<id>51033A0E-71C3-4E0B-90CB-84B622DA8EA4</id>
+	<httpsClient>
+		<serverIpAddressOrDomainName>127.0.0.20</serverIpAddressOrDomainName>
+		<serverPort>443</serverPort>
+		<serverCertificateAuthority>../certificates/pcs-store/pcs-store-component-ca-chain.cert.pem</serverCertificateAuthority>
+		<serverCertificateRevocationList>../certificates/pcs-store/pcs-store-component-ca-chain.crl.pem</serverCertificateRevocationList>
+		<fileCertificate>
+			<certificateAuthority>../certificates/pcs-store/pcs-store-component-ca-chain.cert.pem</certificateAuthority>
+			<certificate>../certificates/pcs-store/pcs-store-client.cert.pem</certificate>
+			<privateKey>../certificates/pcs-store/pcs-store-client.key.pem</privateKey>
+		</fileCertificate>
+		<!-- smartCardCertificate>
+			<pkcs11ModulePath>opensc-pkcs11d.dll</pkcs11ModulePath>
+			<certificateAuthority>../certificates/client/tsp-intermediate-ca-chain.cert.pem</certificateAuthority>
+			<smartCardId>0</smartCardId>
+			<certificateId>0</certificateId>
+			<certificateCommonName>6e761111-522c-462c-a275-671af1c5f50a</certificateCommonName>
+		</smartCardCertificate> -->
+	</httpsClient>
+	<authorizedServer>
+		<certificateCommmonName>pcs-store-server</certificateCommmonName>
+	</authorizedServer>
+</ccb:clientConfiguration>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:acb="http://www.stonepine.fr/application/" xmlns:ccb="http://www.stonepine.fr/client/" xmlns:scb="http://www.stonepine.fr/server/" xmlns:dccb="http://www.stonepine.fr/databaseClient/" xmlns:ccbb="http://www.stonepine.fr/certificate/" targetNamespace="http://www.stonepine.fr/application/" version="1.0">
+
+	<!-- Import -->
+
+	<import namespace="http://www.stonepine.fr/client/" schemaLocation="client.xsd"/>
+	<import namespace="http://www.stonepine.fr/server/" schemaLocation="server.xsd"/>
+	<import namespace="http://www.stonepine.fr/databaseClient/" schemaLocation="databaseClient.xsd"/>
+	<import namespace="http://www.stonepine.fr/certificate/" schemaLocation="certificate.xsd"/>
+
+	<!-- Complex types definitions -->
+
+	<complexType name="oneServerOneDatabaseClientConfigurationComplexType">
+		<sequence>
+			<element name="id" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="serverConfiguration" type="scb:serverConfigurationComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="databaseClientConfiguration" type="dccb:databaseClientConfigurationComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="oneServerOneDatabaseClientConfigurationsComplexType">
+		<sequence>
+			<element name="oneServerOneDatabaseClientConfiguration" type="acb:oneServerOneDatabaseClientConfigurationComplexType" minOccurs="1" maxOccurs="unbounded" >
+				<unique name="uniqueOSODCSid">
+					<selector xpath="id"/>
+					<field xpath="."/>
+				</unique>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="oneServerSeveralDatabaseClientConfigurationComplexType">
+		<sequence>
+			<element name="id" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="serverConfiguration" type="scb:serverConfigurationComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="databaseClientConfigurations" type="dccb:databaseClientConfigurationsComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="oneServerSeveralDatabaseClientConfigurationsComplexType">
+		<sequence>
+			<element name="oneServerSeveralDatabaseClientConfiguration" type="acb:oneServerSeveralDatabaseClientConfigurationComplexType" minOccurs="1" maxOccurs="unbounded" >
+				<unique name="uniqueOSSDCSid">
+					<selector xpath="id"/>
+					<field xpath="."/>
+				</unique>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="oSODCSCConfigurationComplexType">
+		<sequence>
+			<element name="id" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="serverConfiguration" type="scb:serverConfigurationComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="databaseClientConfiguration" type="dccb:databaseClientConfigurationComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="certificateConfigurations" type="ccbb:certificateConfigurationsComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="oSODCSCConfigurationsComplexType">
+		<sequence>
+			<element name="oSODCSCConfiguration" type="acb:oSODCSCConfigurationComplexType" minOccurs="1" maxOccurs="unbounded" >
+				<unique name="uniqueOSODCSCCSid">
+					<selector xpath="id"/>
+					<field xpath="."/>
+				</unique>
+			</element>
+		</sequence>
+	</complexType>
+
+	<complexType name="oSODCOCSCConfigurationComplexType">
+		<sequence>
+			<element name="id" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="serverConfiguration" type="scb:serverConfigurationComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="databaseClientConfiguration" type="dccb:databaseClientConfigurationComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="clientConfiguration" type="ccb:clientConfigurationComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="certificateConfigurations" type="ccbb:certificateConfigurationsComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="oSODCOCSCConfigurationsComplexType">
+		<sequence>
+			<element name="oSODCOCSCConfiguration" type="acb:oSODCOCSCConfigurationComplexType" minOccurs="1" maxOccurs="unbounded" >
+				<unique name="uniqueOSODCOCSCCSid">
+					<selector xpath="id"/>
+					<field xpath="."/>
+				</unique>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Roots -->
+
+	<element name="oneServerOneDatabaseClientConfiguration" type="acb:oneServerOneDatabaseClientConfigurationComplexType" />
+	<element name="oneServerOneDatabaseClientConfigurations" type="acb:oneServerOneDatabaseClientConfigurationsComplexType" />
+
+	<element name="oneServerSeveralDatabaseClientConfiguration" type="acb:oneServerSeveralDatabaseClientConfigurationComplexType" />
+	<element name="oneServerSeveralDatabaseClientConfigurations" type="acb:oneServerSeveralDatabaseClientConfigurationsComplexType" />
+
+	<element name="oSODCSCConfiguration" type="acb:oSODCSCConfigurationComplexType" />
+	<element name="oSODCSCConfigurations" type="acb:oSODCSCConfigurationsComplexType" />
+
+	<element name="oSODCOCSCConfiguration" type="acb:oSODCOCSCConfigurationComplexType" />
+	<element name="oSODCOCSCConfigurations" type="acb:oSODCOCSCConfigurationsComplexType" />
+
+</schema>

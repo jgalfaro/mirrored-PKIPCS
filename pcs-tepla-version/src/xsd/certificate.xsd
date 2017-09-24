@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ccbb="http://www.stonepine.fr/certificate/" targetNamespace="http://www.stonepine.fr/certificate/" version="1.0">
+
+	<!-- Simple types definitxions -->
+
+	<!-- <simpleType name="privateKeySizeSimpleType">
+		<restriction base="short">
+			<enumeration value="1024"/>
+			<enumeration value="2048"/>
+			<enumeration value="4096"/>
+			<enumeration value="8192"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="certificateTypeSimpleType">
+		<restriction base="token">
+			<enumeration value="X509_SELF_SIGNED_CA"/>
+			<enumeration value="X509_CA"/>
+			<enumeration value="X509_INTERMEDIATE_CA"/>
+			<enumeration value="X509_SERVER"/>
+			<enumeration value="X509_CLIENT"/>
+			<enumeration value="X509_REQUEST"/>
+			<enumeration value="X509_REVOCATION_LIST"/>
+			<enumeration value="X509_OCSP_SIGNING"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="certificateExtensionSimpleType">
+		<restriction base="string">
+			<enumeration value="X509_BASIC_CONSTRAINTS"/>
+			<enumeration value="X509_CRL_DISTRIBUTION_POINTS"/>
+			<enumeration value="X509_INFO_ACCESS"/>
+		</restriction>
+	</simpleType> -->
+
+	<!-- Complex types definitxions -->
+
+	<complexType name="certificateExtensionComplexType">
+		<sequence>
+			<element name="name" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="value" type="string" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="certificateExtensionsComplexType">
+		<sequence>
+			<element name="certificateExtension" type="ccbb:certificateExtensionComplexType" minOccurs="1" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<complexType name="certificateComplexType">
+		<sequence>
+			<element name="certificateType" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="countryName" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="stateOrProvinceName" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="localityName" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="organizationName" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="organizationalUnitName" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="commonName" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="emailAddress" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="alternativeName" type="string" minOccurs="0" maxOccurs="unbounded" />
+			<element name="beginValidityDate" type="dateTime" minOccurs="0" maxOccurs="1" />
+			<element name="endValidityDate" type="dateTime" minOccurs="0" maxOccurs="1" />
+			<element name="numberOfValidDaysFromNow" type="int" minOccurs="0" maxOccurs="1" default="365" />
+			<element name="certificateExtensions" type="ccbb:certificateExtensionsComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="serialNumber" type="unsignedLong" minOccurs="0" maxOccurs="1" />
+			<element name="privateKeyType" type="string" minOccurs="0" maxOccurs="1" default="RSA_4096" />
+			<element name="privateKeyPassword" type="string" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="certificateConfigurationComplexType">
+		<sequence>
+			<element name="id" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="issuer" type="ccbb:certificateComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="subject" type="ccbb:certificateComplexType" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="certificateConfigurationsComplexType">
+		<sequence>
+			<element name="dumpDirectoryPath" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="certificateConfiguration" type="ccbb:certificateConfigurationComplexType" minOccurs="1" maxOccurs="unbounded" >
+				<unique name="unique_id">
+					<selector xpath="id"/>
+					<field xpath="."/>
+				</unique>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Roots -->
+
+	<element name="certificateConfiguration" type="ccbb:certificateConfigurationComplexType"/>
+	<element name="certificateConfigurations" type="ccbb:certificateConfigurationsComplexType"/>
+
+</schema>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:accb="http://www.stonepine.fr/authorizedCertificate/" targetNamespace="http://www.stonepine.fr/authorizedCertificate/" version="1.0">
+
+	<!-- Complex types definitions -->
+
+	<complexType name="authorizedCertificateConfigurationComplexType">
+		<sequence>
+			<element name="certificateCommmonName" type="string" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="authorizedCertificatesConfigurationComplexType">
+		<sequence>
+			<element name="certificateCommmonName" type="string" minOccurs="1" maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+	<!-- Root -->
+
+	<element name="authorizedCertificateConfiguration" type="accb:authorizedCertificateConfigurationComplexType" />
+	<element name="authorizedCertificatesConfiguration" type="accb:authorizedCertificatesConfigurationComplexType" />
+
+</schema>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ccb="http://www.stonepine.fr/client/" xmlns:acb="http://www.stonepine.fr/authentication/" xmlns:accb="http://www.stonepine.fr/authorizedCertificate/" targetNamespace="http://www.stonepine.fr/client/" version="1.0">
+
+	<!-- Import -->
+
+	<import namespace="http://www.stonepine.fr/authentication/" schemaLocation="authentication.xsd"/>
+	<import namespace="http://www.stonepine.fr/authorizedCertificate/" schemaLocation="authorizedCertificate.xsd"/>
+
+	<!-- Complex types definitions -->
+
+	<complexType name="headerFieldComplexType">
+		<sequence>
+			<element name="name" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="value" type="string" minOccurs="1" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="clientComplexType">
+		<sequence>
+			<element name="name" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="serverIpAddressOrDomainName" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="serverPort" type="unsignedShort" minOccurs="1" maxOccurs="1" />
+			<element name="serverEndPoint" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="dataToSend" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="commandToSend" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="headerFields" type="ccb:headerFieldComplexType" minOccurs="0" maxOccurs="unbounded" />
+			<element name="serverCertificateAuthority" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="serverCertificateRevocationList" type="string" minOccurs="0" maxOccurs="1" />
+			<element name="fileCertificate" type="acb:fileCertificateConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+			<element name="smartCardCertificate" type="acb:smartCardCertificateConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="clientConfigurationComplexType">
+		<sequence>
+			<element name="id" type="string" minOccurs="1" maxOccurs="1" />
+			<element name="httpsClient" type="ccb:clientComplexType" minOccurs="1" maxOccurs="1" />
+			<element name="authorizedServer" type="accb:authorizedCertificateConfigurationComplexType" minOccurs="0" maxOccurs="1" />
+		</sequence>
+	</complexType>
+
+	<complexType name="clientConfigurationsComplexType">
+		<sequence>
+			<element name="clientConfiguration" type="ccb:clientConfigurationComplexType" minOccurs="1" maxOccurs="unbounded" >
+				<unique name="unique_id">
+					<selector xpath="id"/>
+					<field xpath="."/>
+				</unique>
+			</element>
+		</sequence>
+	</complexType>
+
+	<!-- Roots -->
+
+	<element name="clientConfiguration" type="ccb:clientConfigurationComplexType"/>
+	<element name="clientConfigurations" type="ccb:clientConfigurationsComplexType"/>
+
+</schema>
