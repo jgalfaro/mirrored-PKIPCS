@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/porocher/sourceCode/vs2017/stonepine/stonepine/test/main.cpp
+stonepine/security/attributeBasedEncryption/pcsServer.h
+-
+stonepine/security/attributeBasedEncryption/pcsClient.h
+-
+

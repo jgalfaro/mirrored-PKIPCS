@@ -1,0 +1,7 @@
+/home/porocher/sourceCode/vs2017/stonepine/stonepine/test/CMakeFiles/install/strip.dir
+/home/porocher/sourceCode/vs2017/stonepine/stonepine/test/CMakeFiles/install/local.dir
+/home/porocher/sourceCode/vs2017/stonepine/stonepine/test/CMakeFiles/pcsTest.dir
+/home/porocher/sourceCode/vs2017/stonepine/stonepine/test/CMakeFiles/install.dir
+/home/porocher/sourceCode/vs2017/stonepine/stonepine/test/CMakeFiles/list_install_components.dir
+/home/porocher/sourceCode/vs2017/stonepine/stonepine/test/CMakeFiles/edit_cache.dir
+/home/porocher/sourceCode/vs2017/stonepine/stonepine/test/CMakeFiles/rebuild_cache.dir

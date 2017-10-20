@@ -1,0 +1,15 @@
+2017-10-18 14:30:52 [INFO] : [libraries] using libtepla version 2.0.0
+2017-10-18 14:30:52 [INFO] : [libraries] using default pairingMethod
+2017-10-18 14:30:52 [INFO] : [libraries] using default pairingMethod
+2017-10-18 14:40:10 [INFO] : [libraries] using libtepla version 2.0.0
+2017-10-18 14:40:10 [INFO] : [libraries] using default pairingMethod
+2017-10-18 14:40:10 [INFO] : [libraries] using default pairingMethod
+2017-10-19 08:16:03 [INFO] : [libraries] using libtepla version 2.0.0
+2017-10-19 08:16:03 [INFO] : [libraries] using default pairingMethod
+2017-10-19 08:16:03 [INFO] : [libraries] using default pairingMethod
+2017-10-19 08:18:21 [INFO] : [libraries] using libtepla version 2.0.0
+2017-10-19 08:18:21 [INFO] : [libraries] using default pairingMethod
+2017-10-19 08:18:21 [INFO] : [libraries] using default pairingMethod
+2017-10-19 08:18:54 [INFO] : [libraries] using libtepla version 2.0.0
+2017-10-19 08:18:54 [INFO] : [libraries] using default pairingMethod
+2017-10-19 08:18:54 [INFO] : [libraries] using default pairingMethod
