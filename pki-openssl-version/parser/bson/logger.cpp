@@ -48,3 +48,4 @@ namespace Stonepine
 		std::cout << "ERROR: " << fm_errorInfo << std::endl;
 	}
 }
+ 

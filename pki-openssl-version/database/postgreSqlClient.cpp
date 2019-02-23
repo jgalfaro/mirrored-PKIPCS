@@ -7,3 +7,4 @@ Pierre-Olivier Rocher
 #include "postgreSqlClient.h"
 
 #include "postgreSqlClient.odb.cpp"
+ 

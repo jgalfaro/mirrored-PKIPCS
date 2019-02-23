@@ -425,3 +425,4 @@ const bool verify(const mcl::bn256::G1& fm_h1, const mcl::bn256::G2& fm_g2, cons
 
 	return false;
 }
+ 

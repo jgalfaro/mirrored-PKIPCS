@@ -141,4 +141,4 @@ int mainfiniteFieldFp2(void)
 int main(void)
 {
 	return mainfiniteFieldFp2();
-}
+} 
